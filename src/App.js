@@ -1,13 +1,13 @@
 import React from "react";
 import TodoForm from "./components/TodoComponents/TodoForm";
-// import TodoList from "./components/TodoComponents/TodoList";
+import TodoList from "./components/TodoComponents/TodoList";
 
 class App extends React.Component {
 	// you will need a place to store your state in this component.
 	constructor() {
 		super();
 		this.state = {
-			item: ""
+			list: []
 		};
 	}
 
@@ -16,7 +16,11 @@ class App extends React.Component {
 			task: todo,
 			id: Date.now(),
 			completed: false
-		}
+		};
+		this.setState({
+			list: [...this.state.list, newTodo]
+		});
+		console.log(this.state.list);
 	}
 
 	// design `App` to be the parent component of your application.
@@ -26,9 +30,9 @@ class App extends React.Component {
 			<div>
 				<h2>Welcome to your Todo App!</h2>
 				<div className="App">
-					<TodoForm />
+					<TodoForm  addItem={this.addItem}/>
 					{/* <TodoForm addItem={this.addItem} /> */}
-					{/* <TodoList /> */}
+					<TodoList list={this.state.list}/>
 					{/* <TodoList groceries={this.state.groceries} /> */}
 				</div>
 			</div>
