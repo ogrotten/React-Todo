@@ -15,7 +15,7 @@ class TodoForm extends React.Component {
 	}
 
 	handleSubmit = e => {
-		console.log(this.state);
+		// console.log(this.state);
 		e.preventDefault();
 		this.props.addItem(this.state.newTodo)
 		this.setState({ newTodo: "" })  // clear the form after submission!
